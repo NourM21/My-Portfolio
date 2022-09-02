@@ -95,3 +95,27 @@ function portfolioItemDetails (portfolioitem) {
     document.querySelector(".pp-header h3").innerHTML = portfolioitem.querySelector(".portfolio-item-title").innerHTML;
     document.querySelector(".pp-body").innerHTML = portfolioitem.querySelector(".portfolio-item-details").innerHTML;
 };
+
+// Send Message
+
+const form = document.querySelector(".contactform");
+
+function sendMsg(e) {
+	e.preventDefault();
+	const name = document.querySelector(".name"),
+	  email = document.querySelector(".email"),
+	  subject = document.querySelector(".subject"),
+	  msg = document.querySelector(".msg");
+	  
+	  Email.send({
+		SecureToken : "f3fc83c9-670a-4426-8840-67fbd7012962",
+		To : 'nourmando9322@gmail.com',
+		From : email.value,
+		Subject : subject.value,
+		Body : msg.value
+		}).then(
+			message => alert(message)
+		);
+};
+
+form.addEventListener("submit", sendMsg);
