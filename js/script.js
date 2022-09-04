@@ -98,24 +98,22 @@ function portfolioItemDetails (portfolioitem) {
 
 // Send Message
 
-const form = document.querySelector(".contactform");
+const btn = document.querySelector(".btn-click");
+btn.addEventListener("click", sendEmail);
+function sendEmail() {
+    const name = document.querySelector(".name"), 
+    email = document.querySelector(".email"),
+	subject = document.querySelector(".subject"),
+	msg = document.querySelector(".msg");
 
-function sendMsg(e) {
-	e.preventDefault();
-	const name = document.querySelector(".name"),
-	  email = document.querySelector(".email"),
-	  subject = document.querySelector(".subject"),
-	  msg = document.querySelector(".msg");
-	  
-	  Email.send({
-		SecureToken : "f3fc83c9-670a-4426-8840-67fbd7012962",
-		To : 'nourmando9322@gmail.com',
-		From : email.value,
-		Subject : subject.value,
-		Body : msg.value
-		}).then(
-			message => alert(message)
-		);
+    Email.send({
+        SecureToken : "616d3254-508f-4f6e-9d42-fd7303e9e0f0",
+        To : 'itefouryear@gmail.com',
+        From : "nourmando9322@gmail.com",
+        Subject : subject.value,
+        Body : "My name is " + name.value + " - My email is " + email.value + " - My message is "
+        + msg.value
+    }).then(
+        message => alert("Message sent successfully")
+    );
 };
-
-form.addEventListener("submit", sendMsg);
